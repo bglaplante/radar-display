@@ -55,6 +55,9 @@ sizex = 0
 sizey = 0
 zerox = 0
 zeroy = 0
+ah_zerox = 0
+ah_zeroy = 0
+max_pixel = 0
 verylargefont = ""
 largefont = ""
 mediumfont = ""
@@ -139,7 +142,7 @@ def init(fullcircle=True):
     compass_aircraft = Image.open(pic_path).convert("RGBA")
     mask = Image.new('1', (LARGE * 2, LARGE * 2))
     cdraw = ImageDraw.Draw(mask)
-    return draw, sizex, zerox, zeroy, display_refresh
+    return draw, sizey, zerox, zeroy, display_refresh
 
 
 def cleanup():
@@ -192,8 +195,6 @@ def startup(draw, version, target_ip, seconds):
 
 
 def aircraft(draw, x, y, direction, height, vspeed, nspeed_length, tail):
-    x = 0.9 * x   # fudge as aircraft showing too far away for unknown reason
-    y = 0.9 * y   # fudge as aircraft showing too far away for unknown reason
     p1 = posn(270 + direction, 2 * AIRCRAFT_SIZE)
     p2 = posn(270 + direction + 150, 4 * AIRCRAFT_SIZE)
     p3 = posn(270 + direction + 180, 2 * AIRCRAFT_SIZE)
